@@ -8,8 +8,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Auth;
 use Laravel\Passport\HasApiTokens;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 
-class ShopCustomer extends Authenticatable
+class ShopCustomer extends Authenticatable implements MustVerifyEmail
 {
     use Notifiable, HasApiTokens;
 

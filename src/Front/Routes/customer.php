@@ -1,10 +1,11 @@
 <?php
 $prefixCustomer = sc_config('PREFIX_MEMBER') ?? 'customer';
 
+$midlware = ['auth','email.verify'];
 Route::group(
     [
         'prefix' => $langUrl.$prefixCustomer, 
-        'middleware' => 'auth'
+        'middleware' => $midlware
     ],
     function ($router) use ($suffix) {
         $prefixCustomerOrderList = sc_config('PREFIX_MEMBER_ORDER_LIST')??'order-list';
@@ -42,3 +43,8 @@ Route::group(
             ->name('customer.address_detail');   
     }
 );
+
+        // The Email Verification Notice
+        Route::get('/email/verify', 'ShopAccountController@verificationProcessFront')
+            ->middleware(['auth'])
+            ->name('customer.verify'); 

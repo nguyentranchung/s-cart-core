@@ -484,4 +484,31 @@ class ShopAccountController extends RootFrontController
         return json_encode(['error' => 0, 'msg' => trans('account.delete_address_success')]);
     }
 
+    /**
+     * Process front address update
+     *
+     * @param [type] ...$params
+     * @return void
+     */
+    public function verificationProcessFront(...$params) 
+    {
+        if (config('app.seoLang')) {
+            $lang = $params[0] ?? '';
+            sc_lang_switch($lang);
+        }
+        return $this->_verification();
+    }
+
+    private function _verification() {
+        sc_check_view($this->templatePath . '.account.verify');
+        $customer = auth()->user();
+        return view($this->templatePath . '.account.verify')
+            ->with(
+                [
+                    'title' => trans('account.my_profile'),
+                    'customer' => $customer,
+                    'layout_page' => 'shop_profile',
+                ]
+            );
+    }
 }
