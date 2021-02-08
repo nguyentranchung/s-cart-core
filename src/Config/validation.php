@@ -12,6 +12,8 @@ return [
         'address1_null'      => 'nullable|string|max:100',
         'address2_required'  => 'required|string|max:100',
         'address2_null'      => 'nullable|string|max:100',
+        'address3_required'  => 'required|string|max:100',
+        'address3_null'      => 'nullable|string|max:100',
         'phone_required'     => 'required|regex:/^0[^0][0-9\-]{7,13}$/',
         'phone_null'         => 'nullable|regex:/^0[^0][0-9\-]{7,13}$/',
         'country_required'   => 'required|string|min:2',
